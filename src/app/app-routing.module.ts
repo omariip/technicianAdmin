@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'rejected',
+    loadChildren: () => import('./rejected/rejected.module').then( m => m.RejectedPageModule)
+  },
 ];
 
 @NgModule({

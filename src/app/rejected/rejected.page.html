@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>rejected</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="technicians.length !== 0; else norequests">
+    <ion-card *ngFor="let t of technicians; index as i">
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Name: {{t.technicianName}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Email: {{t.technicianEmail}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Phone: {{t.technicianPhone}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="ion-text-wrap"> Street: {{t.technicianAddress.street}}<br>
+            City: {{t.technicianAddress.city}}<br>
+            Postal: {{t.technicianAddress.postal}}<br>
+            Province: {{t.technicianAddress.province}}
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Insurance Company: {{t.technicianInsurance.insuranceCompany}}</ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label>Insurance Number: {{t.technicianInsurance.insuranceNumber}}</ion-label>
+        </ion-item>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" class="ion-text-center">
+              <ion-button size="small" color="success" (click)="alertApprove(i)">
+                <ion-icon slot="start" name="checkmark-outline"></ion-icon>
+                Re-approve
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ng-template #norequests>
+    <ion-card color="danger">
+      <ion-card-content>
+        No rejected technicians
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-content>

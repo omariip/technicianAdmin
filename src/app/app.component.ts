@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
+import { signInWithEmailAndPassword } from '@firebase/auth';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private auth: Auth) {
+    this.signIn();
+  }
+
+  async signIn() {
+    signInWithEmailAndPassword(this.auth, "mobichanic@admin.com", "mobichanic")
+    .then(() => {})
+    .catch((e) => {console.log(e)});
+  }
 }
